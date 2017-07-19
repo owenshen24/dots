@@ -72,12 +72,24 @@ $(document).ready(function() {
 
 
 
-//The function that checks for collision
+//The function that checks for collision between the cursor circle and the dot
   function dotLogger() {
     for(var i = 0; i < $(".dot").length; i++) {
-      var leftCheck = Math.abs((parseInt($(".square").css("left"))) - parseInt($(".dot")[i].style.left) + 50);
-      var topCheck = Math.abs((parseInt($(".square").css("top"))) - parseInt($(".dot")[i].style.top) + 50);
-      if ((leftCheck <= 30) && (topCheck <= 50)) {
+
+      var $this = $(".square");
+      var offset = $this.offset();
+      var width = $this.width();
+      var height = $this.height();
+
+      var centerX = (offset.left + (width / 2));
+      var centerY = (offset.top + (height / 2));
+
+      var leftDiff = Math.abs(centerX - parseInt($(".dot")[i].style.left));
+      var topDiff = Math.abs(centerY - parseInt($(".dot")[i].style.top));
+
+      var ptDist = Math.sqrt(Math.pow((Math.abs(leftDiff)), 2) + Math.pow((Math.abs(topDiff)), 2) );
+
+      if (ptDist <= (1.1 * $width) ) {
         $(".dot")[i].parentNode.removeChild($(".dot")[i]);
         score++;
         $(".points").text(score);
