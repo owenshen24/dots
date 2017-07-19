@@ -15,6 +15,7 @@ $(document).ready(function() {
   var cap = 5;
   var max = 50;
   var tolerance = 50;
+  var grow = false;
 
   var score = 0;
 
@@ -24,6 +25,11 @@ $(document).ready(function() {
     $mouseY = event.pageY;
   });
 
+
+  $(document).keydown(function() {
+    grow = !grow;
+    $(".square").css({"height" : "50px", "width" : "50px" })
+  })
 
 
 //The loop that causes the function to do things
@@ -75,8 +81,9 @@ $(document).ready(function() {
         $(".dot")[i].parentNode.removeChild($(".dot")[i]);
         score++;
         $(".points").text(score);
-      }
-      }
+        if(grow){
+        $(".square").css({"height" : ($(".square").height()*1.05), "width" : ($(".square").width()*1.05) })
+      }}}
   }
 
 
