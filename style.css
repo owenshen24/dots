@@ -1,0 +1,23 @@
+.square {
+  position: relative;
+  border-radius: 50%;
+  width:50px;
+  height:50px;
+  background-color:black;
+  z-index: 2;
+}
+
+.dot {
+  position: absolute;
+  display: inline-block;
+  border-radius: 50%;
+  width:20px;
+  height:20px;
+  background-color:darkgray;
+}
+
+.points {
+  font-size: 30px;
+  font-family: "Avenir Light", "Avenir", "Helvetica", "sans-serif";
+  color:royalblue;
+}
